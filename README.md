@@ -9,3 +9,5 @@ See [Nine steps for better looking python code](https://towardsdatascience.com/n
 
 2. Joel Grus' [Ten Essays on Fizz Buzz](https://joelgrus.com/2020/06/06/ten-essays-on-fizz-buzz/) where he describes ways to solve the Fizz Buzz coding exercise. While it provides the 10 solutions, it is more a discussion on Python, Maths, Testing and Coding. And if you don't know who is Joel Grus, check out his presentation about his everalasting [love towards Jupyter Notebooks](https://youtu.be/7jiPeIFXb6U).
 
+Basically, in this repository I am going through Vladimir's paper step by step and show how
+I implemented each step in code.
