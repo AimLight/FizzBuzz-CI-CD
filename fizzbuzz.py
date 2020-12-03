@@ -1,13 +1,16 @@
-import scipy
-import pandas
-import numpy as np 
+""" Function to solve the fizzbuzz problem."""
 
-import matplotlib
-from matplotlib import pyplot as plt
+def fizz_buzz(num: int) -> str:
+    """This is my great and neat function to solve the famous
+    Fizz Buzz problem.
+    :param num: That's the number which we want the answer for
 
-####### Here I start the solution to the fizz buzz problem #######
-def fizz_buzz(n: int) -> str:
-    if n % 15 == 0: return 'fizzbuzz'
-    elif n % 5 == 0: return 'buzz'
-    elif n % 3 == 0: return 'fizz'
-    else: return str(n)
+    :return: fizz, buzz, fizzbuzz or the number itself
+    """
+    if num % 15 == 0:
+        return "fizzbuzz"
+    if num % 5 == 0:
+        return "buzz"
+    if num % 3 == 0:
+        return "fizz"
+    return str(num)
