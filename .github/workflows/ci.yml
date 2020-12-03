@@ -38,7 +38,7 @@ jobs:
         pip install black flake8 mypy pytest hypothesis isort pylint
     - name: Run black
       run:
-        black --check .
+        black --check . --exclude docs/
     - name: Run flake8
       run: flake8 fizzbuzz.py
     - name: Run pylint
