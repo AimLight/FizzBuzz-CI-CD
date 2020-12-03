@@ -17,11 +17,11 @@ repos:
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 3.7.9
     hooks:
-    - id: flake8
--   repo: https://github.com/pre-commit/mirrors-pylint
-    rev: d230ffd
+    -   id: flake8
+-   repo: local
     hooks:
     -   id: pylint
-        args:
-        - --ignore-imports=yes
-        - -d duplicate-code
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
