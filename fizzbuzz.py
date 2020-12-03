@@ -8,10 +8,10 @@ def fizz_buzz(num: int) -> str:
 
     :return: fizz, buzz, fizzbuzz or the number itself
     """
-    if num % 15 == 0:
-        return "fizzbuzz"
-    if num % 5 == 0:
-        return "buzz"
     if num % 3 == 0:
         return "fizz"
+    if num % 5 == 0:
+        return "buzz"
+    if num % 15 == 0:
+        return "fizzbuzz"
     return str(num)
