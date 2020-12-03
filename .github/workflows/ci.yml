@@ -48,6 +48,4 @@ jobs:
     - name: Run isort
       run: isort --profile black fizzbuzz.py
     - name: tests
-      run: |
-       pip install .[tests]
-       pytest
+      run: pytest tests/test_fizzbuzz.py
