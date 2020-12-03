@@ -1,4 +1,4 @@
-""" Function to solve the fizzbuzz problem."""
+"""Function to solve the fizzbuzz problem."""
 
 
 def fizz_buzz(num: int) -> str:
