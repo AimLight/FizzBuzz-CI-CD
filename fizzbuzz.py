@@ -1,13 +1,17 @@
-# Here I start the solution to the fizz buzz problem #######
-def fizz_buzz(n: int) -> str:
-    if n % 15 == 0:
+""" Function to solve the fizzbuzz problem."""
+
+
+def fizz_buzz(num: int) -> str:
+    """This is my great and neat function to solve the famous
+    Fizz Buzz problem.
+    :param num: That's the number which we want the answer for
+
+    :return: fizz, buzz, fizzbuzz or the number itself
+    """
+    if num % 15 == 0:
         return "fizzbuzz"
-    elif n % 5 == 0:
+    if num % 5 == 0:
         return "buzz"
-    elif n % 3 == 0:
+    if num % 3 == 0:
         return "fizz"
-    else:
-        return str(n)
-
-
-print(fizz_buzz(10))
+    return str(num)
