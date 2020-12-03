@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>IV. Pre-commit hook &mdash; FizzBuzz CI/CD  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="V. Testing the code" href="PartV.html" />
+    <link rel="prev" title="III. FizzBuzz" href="PartIII.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> FizzBuzz CI/CD
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master brunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PartII.html">II. Continuous Integration / Continuous Delivery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PartIII.html">III. FizzBuzz</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">IV. Pre-commit hook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-the-pre-commit-hook">Setting up the pre-commit hook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-the-pre-commit-hook">Testing the pre-commit hook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="PartV.html">V. Testing the code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FizzBuzz CI/CD</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>IV. Pre-commit hook</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/PartIV.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="iv-pre-commit-hook">
+<h1>IV. Pre-commit hook<a class="headerlink" href="#iv-pre-commit-hook" title="Permalink to this headline">¶</a></h1>
+<p>A pre-commit hook is kind of a script that will be run when you do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;&lt;commit message&gt;&quot;</span>
+</pre></div>
+</div>
+<p>Link to the original description of the <a class="reference external" href="https://pre-commit.com/">pre-commit hook</a>.</p>
+<div class="section" id="setting-up-the-pre-commit-hook">
+<h2>Setting up the pre-commit hook<a class="headerlink" href="#setting-up-the-pre-commit-hook" title="Permalink to this headline">¶</a></h2>
+<p>It is necessary to create a <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file in the repository, where you
+would specify all the steps that should be done before the commit is performed. If an error
+is encountered, commit does not happen. Below is a simple <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> configuration
+to check that</p>
+<ul class="simple">
+<li><p>code is formatted according to <code class="docutils literal notranslate"><span class="pre">black</span></code>.</p></li>
+<li><p>sorts imports using <code class="docutils literal notranslate"><span class="pre">isort</span></code>.</p></li>
+<li><p>Uses <code class="docutils literal notranslate"><span class="pre">flake8</span></code> and <code class="docutils literal notranslate"><span class="pre">pylint</span></code> as linters.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">repos</span><span class="p">:</span>
+<span class="o">-</span>   <span class="n">repo</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span><span class="o">/</span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span><span class="o">-</span><span class="n">hooks</span>
+    <span class="n">rev</span><span class="p">:</span> <span class="n">v3</span><span class="o">.</span><span class="mf">2.0</span>
+    <span class="n">hooks</span><span class="p">:</span>
+    <span class="o">-</span>   <span class="nb">id</span><span class="p">:</span> <span class="n">trailing</span><span class="o">-</span><span class="n">whitespace</span>
+    <span class="o">-</span>   <span class="nb">id</span><span class="p">:</span> <span class="n">end</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">fixer</span>
+    <span class="o">-</span>   <span class="nb">id</span><span class="p">:</span> <span class="n">check</span><span class="o">-</span><span class="n">yaml</span>
+    <span class="o">-</span>   <span class="nb">id</span><span class="p">:</span> <span class="n">check</span><span class="o">-</span><span class="n">added</span><span class="o">-</span><span class="n">large</span><span class="o">-</span><span class="n">files</span>
+<span class="o">-</span>   <span class="n">repo</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span><span class="o">/</span><span class="n">mirrors</span><span class="o">-</span><span class="n">isort</span>
+    <span class="n">rev</span><span class="p">:</span> <span class="n">f0001b2</span>  <span class="c1"># Use the revision sha / tag you want to point at</span>
+    <span class="n">hooks</span><span class="p">:</span>
+    <span class="o">-</span>   <span class="nb">id</span><span class="p">:</span> <span class="n">isort</span>
+        <span class="n">args</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;--profile&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">]</span>
+<span class="o">-</span>   <span class="n">repo</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">psf</span><span class="o">/</span><span class="n">black</span>
+    <span class="n">rev</span><span class="p">:</span> <span class="mf">20.8</span><span class="n">b1</span>
+    <span class="n">hooks</span><span class="p">:</span>
+    <span class="o">-</span>   <span class="nb">id</span><span class="p">:</span> <span class="n">black</span>
+<span class="o">-</span>   <span class="n">repo</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gitlab</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pycqa</span><span class="o">/</span><span class="n">flake8</span>
+    <span class="n">rev</span><span class="p">:</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">9</span>
+    <span class="n">hooks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">flake8</span>
+<span class="o">-</span>   <span class="n">repo</span><span class="p">:</span> <span class="n">local</span>
+    <span class="n">hooks</span><span class="p">:</span>
+    <span class="o">-</span>   <span class="nb">id</span><span class="p">:</span> <span class="n">pylint</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">pylint</span>
+        <span class="n">entry</span><span class="p">:</span> <span class="n">pylint</span>
+        <span class="n">language</span><span class="p">:</span> <span class="n">system</span>
+        <span class="n">types</span><span class="p">:</span> <span class="p">[</span><span class="n">python</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>After the file is created in the repository, run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code> to install pre-commit
+into your git hooks. Et voilà, now the checks will run each time before the commit.</p>
+</div>
+<div class="section" id="testing-the-pre-commit-hook">
+<h2>Testing the pre-commit hook<a class="headerlink" href="#testing-the-pre-commit-hook" title="Permalink to this headline">¶</a></h2>
+<p>Here is a small test: let’s change the neat <code class="docutils literal notranslate"><span class="pre">fizzbuzz.py</span></code> code to get back to the one that
+does not pass the checks and see what happens. Here is a part of the result: it shows
+where it fails, and also modifies the files for corresponding pre-commit hooks (like black
+or isort).</p>
+<a class="reference internal image-reference" href="_images/10_pre-hook-failed.png"><img alt="_images/10_pre-hook-failed.png" class="align-center" src="_images/10_pre-hook-failed.png" style="width: 578.5px; height: 283.5px;" /></a>
+<p>Coming back to the neat version of the <code class="docutils literal notranslate"><span class="pre">fizzbuzz.py</span></code>, the pre-commit hook test is passed.
+Nice! That’s how it looks like in my case:</p>
+<a class="reference internal image-reference" href="_images/11_pre-hook-passed.png"><img alt="_images/11_pre-hook-passed.png" class="align-center" src="_images/11_pre-hook-passed.png" style="width: 479.5px; height: 86.5px;" /></a>
+<p>Finally, we want not to only check the formatting of our code, but also that the code
+works correctly. We can add <code class="docutils literal notranslate"><span class="pre">testing</span></code> of the code to the <code class="docutils literal notranslate"><span class="pre">CI/CD</span></code> pipeline! See chapter
+<a class="reference internal" href="PartV.html#v-testing-the-code"><span class="std std-ref">V. Testing the code</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PartV.html" class="btn btn-neutral float-right" title="V. Testing the code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PartIII.html" class="btn btn-neutral float-left" title="III. FizzBuzz" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Oleg Polivin
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
