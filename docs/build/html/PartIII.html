@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>III. FizzBuzz &mdash; FizzBuzz CI/CD  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="IV. Pre-commit hook" href="PartIV.html" />
+    <link rel="prev" title="II. Continuous Integration / Continuous Delivery" href="PartII.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> FizzBuzz CI/CD
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master brunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PartII.html">II. Continuous Integration / Continuous Delivery</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">III. FizzBuzz</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extended-github-actions-file">Extended GitHub Actions file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-better-version-of-fizzbuzz-py">A better version of <code class="docutils literal notranslate"><span class="pre">fizzbuzz.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#catch-the-problem-before-commiting">Catch the problem before commiting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="PartIV.html">IV. Pre-commit hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PartV.html">V. Testing the code</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FizzBuzz CI/CD</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>III. FizzBuzz</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/PartIII.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="iii-fizzbuzz">
+<h1>III. FizzBuzz<a class="headerlink" href="#iii-fizzbuzz" title="Permalink to this headline">¶</a></h1>
+<p>OK, it is time to write some code!</p>
+<div class="section" id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<p>Fizz Buzz problem is the task that sometimes people get during coding interviews.
+It goes like this (I take the definition from Joel’s book):
+..</p>
+<blockquote>
+<div><p>Print the numbers from 1 to 100, except that if the number is divisible by 3,
+instead print “fizz”; if the number is divisible by 5, instead print “buzz”; and
+if the number is divisible by 15, instead print “fizzbuzz”.</p>
+</div></blockquote>
+<p>So, imagine we come up with a great code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1">####### Here I start the solution to the fizz buzz problem #######</span>
+<span class="k">def</span> <span class="nf">fizz_buzz</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;fizzbuzz&#39;</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;buzz&#39;</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;fizz&#39;</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We were in a hurry, so we first imported everything that we usually import, made comments
+to visually show where the code starts, and printed <code class="docutils literal notranslate"><span class="pre">if</span></code>-<code class="docutils literal notranslate"><span class="pre">return</span></code> statements on the statements
+line. Clearly, there is no newline at end of file, who cares since the code is so great!</p>
+<p>Actually, we do care because the code needs to be readable and beautiful, and we
+decide that it is a good idea to impose structure on every pull request. Also, code must
+pass linter checks and be formatted in a unified manner. It is possible to add all the
+necessary checks that we want to impose in the <code class="docutils literal notranslate"><span class="pre">ci.yml</span></code> file that we created in the previous
+chapter. Let’s say we add:</p>
+<ul class="simple">
+<li><p>black formatter of the code</p></li>
+<li><p>isort to sort the imports in alphabetical order</p></li>
+<li><p>flake8 and pylint to inspect the code for conformity with good code practices</p></li>
+<li><p>MyPy as a static type checker</p></li>
+</ul>
+</div>
+<div class="section" id="extended-github-actions-file">
+<h2>Extended GitHub Actions file<a class="headerlink" href="#extended-github-actions-file" title="Permalink to this headline">¶</a></h2>
+<p>That’s how the <code class="docutils literal notranslate"><span class="pre">ci.yml</span></code> file looks like now:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: CI
+
+on:
+push:
+    branches: [ main ]
+pull_request:
+    branches: [ main ]
+jobs:
+build:
+    runs-on: ubuntu-latest
+    strategy:
+    matrix:
+        python-version: [3.7]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+    uses: actions/setup-python@v2
+    with:
+        python-version: ${{ matrix.python-version }}
+    - name: Cache pip
+    uses: actions/cache@v1
+    with:
+    path: ~/.cache/pip # This path is specific to Ubuntu
+    # Look to see if there is a cache hit for the corresponding requirements file
+    key: ${{ runner.os }}-pip-${{ hashFiles(&#39;requirements.txt&#39;) }}
+    restore-keys: |
+        ${{ runner.os }}-pip-
+        ${{ runner.os }}-
+    # You can test your matrix by printing the current Python version
+    - name: Display Python version
+    run: python -c &quot;import sys; print(sys.version)&quot;
+    - name: Install dependencies
+    run: |
+        python -m pip install --upgrade pip
+        pip install black flake8 mypy pytest hypothesis isort pylint
+    - name: Run black
+    run:
+        black --check .
+    - name: Run flake8
+    run: flake8 fizzbuzz.py
+    - name: Run pylint
+    run: pylint fizzbuzz.py
+    - name: Run Mypy
+    run: mypy fizzbuzz.py
+    - name: Run isort
+    run: isort --profile black fizzbuzz.py
+</pre></div>
+</div>
+<p>Let’s now try to push the solution above to the repository. And we see that it fails on
+the first check. When it fails it does not proceed to the next steps, but it turns out that
+the code above for solving the <code class="docutils literal notranslate"><span class="pre">FizzBuzz</span></code> problem will fail on every check.</p>
+<a class="reference internal image-reference" href="_images/09_failed_check.png"><img alt="_images/09_failed_check.png" class="align-center" src="_images/09_failed_check.png" style="width: 489.5px; height: 302.5px;" /></a>
+</div>
+<div class="section" id="a-better-version-of-fizzbuzz-py">
+<h2>A better version of <code class="docutils literal notranslate"><span class="pre">fizzbuzz.py</span></code><a class="headerlink" href="#a-better-version-of-fizzbuzz-py" title="Permalink to this headline">¶</a></h2>
+<p>The code below passes all of the checks that we have imposed on it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Function to solve the fizzbuzz problem.&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">fizz_buzz</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This is my great and neat function to solve the famous</span>
+<span class="sd">    Fizz Buzz problem.</span>
+<span class="sd">    :param num: That&#39;s the number which we want the answer for</span>
+
+<span class="sd">    :return: fizz, buzz, fizzbuzz or the number itself</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;fizzbuzz&quot;</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;buzz&quot;</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;fizz&quot;</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now when we push it to the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch, pull requests could be merged into the main
+branch since all checks are passed.</p>
+</div>
+<div class="section" id="catch-the-problem-before-commiting">
+<h2>Catch the problem before commiting<a class="headerlink" href="#catch-the-problem-before-commiting" title="Permalink to this headline">¶</a></h2>
+<p>It might be that you want to learn that there are problems with your code (that is,
+it does not pass a check that one imposed) before commiting. Yes, you will run the tests
+locally, but what if there is an additional point of control that does not allow you
+to commit your changes unless all the checks are passed? It is called a <code class="docutils literal notranslate"><span class="pre">Pre-commit</span> <span class="pre">hook</span></code>,
+and more on how to set it up in the next chapter: <a class="reference internal" href="PartIV.html#iv-pre-commit-hook"><span class="std std-ref">IV. Pre-commit hook</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PartIV.html" class="btn btn-neutral float-right" title="IV. Pre-commit hook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PartII.html" class="btn btn-neutral float-left" title="II. Continuous Integration / Continuous Delivery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Oleg Polivin
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
