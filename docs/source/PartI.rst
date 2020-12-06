@@ -1,20 +1,19 @@
-I. Do not push to the master brunch
+I. Do not push to the master branch
 ===================================
 
 The idea is that we want the master branch to contain the main code for our project.
-Even if we work on our own, it might be a good idea to always push to a branche, and then
-integrate the code to the main branch through a pull request (PR). That way we can introduce various checks
-on the pull request, and impose structure on it. Let's see how we can do it in `GitHub`.
+Even if we work on our own, it might be a good idea to always push to a different branch,
+and then integrate the code to the main branch through a pull request (PR).
+That way we can introduce various checks on pull requests,
+and impose structure on them. Let's see how we can do it in ``GitHub``.
 
-I created a repository to illustrate how one sets up a CI/CD pipeline step by step.
-You can find it here.
+I create an empty repository to illustrate how one sets up a CI/CD pipeline step by step.
 ::
 
   https://github.com/olegpolivin/Fizz-Buzz-CI-CD
 
-Now it contains only a ``README.md`` file. It also has only one ``main`` branch, and nothing else.
-
-I clone it locally:
+So far it only contains a ``README.md`` file.
+It also has only one ``main`` branch, and nothing else. I clone it locally:
 
 ::
 
@@ -52,11 +51,12 @@ Click on ``Add rule``. Here is the rule that I've added:
 
 In particular, I've added:
 
-- Require status checks to pass before merging (+ Require branches to be up to date before merging)
+- Require status checks to pass before merging (+ Require branches to be up to date before merging).
     - So far there are none, but we will add them later
-- Include administrators
+
+- Include administrators.
     - Even if we are alone on the project we don't want to allow ourselves to push to ``main``.
 
 Now how can one set up a ``CI/CD`` pipeline, so as to prevent pushing to the ``main``?
 
-See :ref:`II. Continuous Integration / Continuous Delivery` chapter.
+See :ref:`II. Continuous Integration / Continuous Delivery` section.

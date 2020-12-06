@@ -1,9 +1,9 @@
 V. Testing the code
 =====================
 
-In this chapter I show how to integrate unit tests into the ``CI/CD`` pipeline, and 
+In this section I show how to integrate unit tests into the ``CI/CD`` pipeline, and 
 again we will make use of the ``ci.yml`` file. Personally, I like the ``pytest`` framework,
-and that's what I will use in this chapter.
+and that's what I will use in this section.
 
 Setting up the test
 ************************************
@@ -52,11 +52,13 @@ And here is the result:
    :scale: 50 %
    :align: center
 
+But that's the case when everything is ok. We are happy. 
+
 Failing the test
 ***************************
 
-But that's the case when everything is ok. We are happy. Now a new and innovative 
-idea comes to our mind. Why overcomplicate the code, why do we start from ``15``? Let's 
+Now a new and innovative idea comes to my mind.
+Why overcomplicate the code, why do we start from ``15``? Let's 
 sort everything again, the code will like so nice! So, we change the ``fizzbuzz`` code
 to the following one:
 ::
@@ -75,7 +77,7 @@ to the following one:
             return "fizzbuzz"
         return str(num)
 
-Great, let's push and see, that one test has failed:
+Great, let's push and see that one test has failed:
 
 .. image:: _static/imgs/13_failed_test.png
    :scale: 50 %
