@@ -84,7 +84,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master brunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master branch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PartII.html">II. Continuous Integration / Continuous Delivery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PartIII.html">III. FizzBuzz</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">IV. Pre-commit hook</a><ul>
@@ -93,6 +93,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="PartV.html">V. Testing the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Conclusions.html">Conclusions and acknowledgements</a></li>
 </ul>
 
             
@@ -167,6 +168,10 @@
 <p>Link to the original description of the <a class="reference external" href="https://pre-commit.com/">pre-commit hook</a>.</p>
 <div class="section" id="setting-up-the-pre-commit-hook">
 <h2>Setting up the pre-commit hook<a class="headerlink" href="#setting-up-the-pre-commit-hook" title="Permalink to this headline">¶</a></h2>
+<p>First install the pre-commit hook by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
+</pre></div>
+</div>
 <p>It is necessary to create a <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file in the repository, where you
 would specify all the steps that should be done before the commit is performed. If an error
 is encountered, commit does not happen. Below is a simple <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> configuration
@@ -213,15 +218,15 @@ into your git hooks. Et voilà, now the checks will run each time before the com
 <h2>Testing the pre-commit hook<a class="headerlink" href="#testing-the-pre-commit-hook" title="Permalink to this headline">¶</a></h2>
 <p>Here is a small test: let’s change the neat <code class="docutils literal notranslate"><span class="pre">fizzbuzz.py</span></code> code to get back to the one that
 does not pass the checks and see what happens. Here is a part of the result: it shows
-where it fails, and also modifies the files for corresponding pre-commit hooks (like black
-or isort).</p>
+where it fails. Note that the pre-commit hook modifies files for some commands
+(like black or isort).</p>
 <a class="reference internal image-reference" href="_images/10_pre-hook-failed.png"><img alt="_images/10_pre-hook-failed.png" class="align-center" src="_images/10_pre-hook-failed.png" style="width: 578.5px; height: 283.5px;" /></a>
 <p>Coming back to the neat version of the <code class="docutils literal notranslate"><span class="pre">fizzbuzz.py</span></code>, the pre-commit hook test is passed.
-Nice! That’s how it looks like in my case:</p>
+That’s how it looks like in my case:</p>
 <a class="reference internal image-reference" href="_images/11_pre-hook-passed.png"><img alt="_images/11_pre-hook-passed.png" class="align-center" src="_images/11_pre-hook-passed.png" style="width: 479.5px; height: 86.5px;" /></a>
-<p>Finally, we want not to only check the formatting of our code, but also that the code
-works correctly. We can add <code class="docutils literal notranslate"><span class="pre">testing</span></code> of the code to the <code class="docutils literal notranslate"><span class="pre">CI/CD</span></code> pipeline! See chapter
-<a class="reference internal" href="PartV.html#v-testing-the-code"><span class="std std-ref">V. Testing the code</span></a>.</p>
+<p>Finally, we want to not only check the formatting of our code, but also make sure
+that the code works correctly. We can add unit tests to the <code class="docutils literal notranslate"><span class="pre">CI/CD</span></code> pipeline!
+See section <a class="reference internal" href="PartV.html#v-testing-the-code"><span class="std std-ref">V. Testing the code</span></a>.</p>
 </div>
 </div>
 

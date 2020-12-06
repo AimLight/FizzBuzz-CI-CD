@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="III. FizzBuzz" href="PartIII.html" />
-    <link rel="prev" title="I. Do not push to the master brunch" href="PartI.html" /> 
+    <link rel="prev" title="I. Do not push to the master branch" href="PartI.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,7 +84,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master brunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master branch</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">II. Continuous Integration / Continuous Delivery</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-example">Basic example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-up-a-rule-for-your-branch">Set up a rule for your branch</a></li>
@@ -160,14 +160,15 @@
             
   <div class="section" id="ii-continuous-integration-continuous-delivery">
 <h1>II. Continuous Integration / Continuous Delivery<a class="headerlink" href="#ii-continuous-integration-continuous-delivery" title="Permalink to this headline">¶</a></h1>
-<p>In practice one needs to add a config file to the repository under <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> folder.
-My file is located here:</p>
+<p>In order to start with CI/CD using GitHub Actions one just needs to add
+a config file to the repository under <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> folder.
+You can find my configuration here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">olegpolivin</span><span class="o">/</span><span class="n">FizzBuzz</span><span class="o">-</span><span class="n">CI</span><span class="o">-</span><span class="n">CD</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">main</span><span class="o">/.</span><span class="n">github</span><span class="o">/</span><span class="n">workflows</span><span class="o">/</span><span class="n">ci</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
 <div class="section" id="basic-example">
 <h2>Basic example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h2>
-<p>For example:</p>
+<p>The most basic configuration file might be the following one:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
@@ -195,22 +196,22 @@ jobs:
       run: python -c &quot;import sys; print(sys.version)&quot;
 </pre></div>
 </div>
-<p>It is not doing anything important. It makes use of <code class="docutils literal notranslate"><span class="pre">Github</span> <span class="pre">Actions</span></code> and only thing it does
-is printing a python version, in my case <code class="docutils literal notranslate"><span class="pre">3.7</span></code>. However, this is enough for <code class="docutils literal notranslate"><span class="pre">Github</span></code> to
-prevent you from pushing to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. It is necessary now to push to a different branch.
-Creating a pull request will run the script above. Pull request will always be approved,
-because the script checks nothing. However, the whole procedure prevents you now from pushing
-directly to <code class="docutils literal notranslate"><span class="pre">main</span></code>. Later we will add code formatters and a linter to this script.</p>
+<p>It is not doing anything important. It makes use of <code class="docutils literal notranslate"><span class="pre">Github</span> <span class="pre">Actions</span></code> and the only
+thing it does is printing a python version, in my case <code class="docutils literal notranslate"><span class="pre">3.7</span></code>.
+Creating a pull request will run the script above. Pull request will always pass all
+checks, because the script cheks nothing. However, the setting above is enough
+for <code class="docutils literal notranslate"><span class="pre">Github</span></code> to prevent from pushing directly to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. We just need to
+add a rule for a branch. Later we will add code formatters and a linter to this script.</p>
 </div>
 <div class="section" id="set-up-a-rule-for-your-branch">
 <h2>Set up a rule for your branch<a class="headerlink" href="#set-up-a-rule-for-your-branch" title="Permalink to this headline">¶</a></h2>
 <p>It is necessary just to add some modifications to the <code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">Branches</span> <span class="pre">-&gt;</span> <span class="pre">Rules</span></code>. See
 what’s new:</p>
 <a class="reference internal image-reference" href="_images/06_cicd.png"><img alt="_images/06_cicd.png" class="align-center" src="_images/06_cicd.png" style="width: 460.0px; height: 399.5px;" /></a>
-<p>Notice that <code class="docutils literal notranslate"><span class="pre">build</span> <span class="pre">(3.7)</span></code> has appeared among statuses. This corresponds to the name of the job
-(<code class="docutils literal notranslate"><span class="pre">build</span></code>) and python version <code class="docutils literal notranslate"><span class="pre">3.7</span></code>.</p>
-<p>I made a small modification to the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file, and let’s see if I can push it now to
-the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Here is the error I get:</p>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">build</span> <span class="pre">(3.7)</span></code> has appeared among status checks.
+This corresponds to the name of the job (<code class="docutils literal notranslate"><span class="pre">build</span></code>) and python version <code class="docutils literal notranslate"><span class="pre">3.7</span></code>.
+I made a small modification to the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file,
+and let’s see if I can push it now to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Here is the error I get:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Total 3 (delta 1), reused 0 (delta 0)
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 remote: error: GH006: Protected branch update failed for refs/heads/main.
@@ -220,8 +221,8 @@ To https://github.com/olegpolivin/FizzBuzz-CI-CD.git
 error: failed to push some refs to &#39;https://github.com/olegpolivin/FizzBuzz-CI-CD.git&#39;
 </pre></div>
 </div>
-<p>Nice! The commit is rejected because a required status check is needed.</p>
-<p>Therefore, let’s push to a new branch. Locally, let’s create a new branch</p>
+<p>Nice! The commit is rejected because a required status check is needed.
+Therefore, let’s push to a new branch. Locally, let’s create a new branch</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">dev</span>
 <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">dev</span>
 </pre></div>
@@ -232,8 +233,8 @@ What’s left is to create a pull request, and merge it to the <code class="docu
 <p>It becomes possible to merge after all checks are run:</p>
 <a class="reference internal image-reference" href="_images/08_merge.png"><img alt="_images/08_merge.png" class="align-center" src="_images/08_merge.png" style="width: 515.0px; height: 372.0px;" /></a>
 <p>We would like to introduce actions or tests to be performed, before the pull request is
-ready to be approved, so let’s produce code that will be actually checked. It will be
-a solution to the <code class="docutils literal notranslate"><span class="pre">FizzBuzz</span></code> problem, see the next chapter <a class="reference internal" href="PartIII.html#iii-fizzbuzz"><span class="std std-ref">III. FizzBuzz</span></a>.</p>
+ready to be approved, so let’s provide code that will be actually checked. We will
+consider solving the <code class="docutils literal notranslate"><span class="pre">FizzBuzz</span></code> problem, see the next section <a class="reference internal" href="PartIII.html#iii-fizzbuzz"><span class="std std-ref">III. FizzBuzz</span></a>.</p>
 </div>
 </div>
 
@@ -248,7 +249,7 @@ a solution to the <code class="docutils literal notranslate"><span class="pre">F
         <a href="PartIII.html" class="btn btn-neutral float-right" title="III. FizzBuzz" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PartI.html" class="btn btn-neutral float-left" title="I. Do not push to the master brunch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PartI.html" class="btn btn-neutral float-left" title="I. Do not push to the master branch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

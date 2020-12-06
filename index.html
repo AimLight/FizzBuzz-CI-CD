@@ -36,7 +36,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="I. Do not push to the master brunch" href="PartI.html" /> 
+    <link rel="next" title="I. Do not push to the master branch" href="PartI.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,11 +83,12 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master brunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master branch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PartII.html">II. Continuous Integration / Continuous Delivery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PartIII.html">III. FizzBuzz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PartIV.html">IV. Pre-commit hook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PartV.html">V. Testing the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Conclusions.html">Conclusions and acknowledgements</a></li>
 </ul>
 
             
@@ -155,11 +156,29 @@
             
   <div class="section" id="welcome-to-fizzbuzz-ci-cd-s-documentation">
 <h1>Welcome to FizzBuzz CI/CD’s documentation!<a class="headerlink" href="#welcome-to-fizzbuzz-ci-cd-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Hello this is a do</p>
+<p>This is a “documentation”-like version of my article on Medium:
+<a class="reference external" href="https://medium.com/p/5a032508bb20">“A practical guide for better-looking python code”</a>.</p>
+<p>In this article I describe how one can set up a continuous integration / continuous delivery (CI/CD) pipeline using GitHub.
+This text is inspired by two sources. First one is
+<a class="reference external" href="https://towardsdatascience.com/nine-simple-steps-for-better-looking-python-code-87e5d9d3b1cf">“Nine simple steps for better-looking python code”</a>
+by <a class="reference external" href="https://github.com/ternaus">Vladimir Iglovikov</a>. He gives the keys to better coding practices with CI/CD systems as its core.
+It is a great article and I wrote mine following the steps outlined there.
+So, “A practical guide for better-looking python code” is an accompanying/practical
+guide to Vladimir’s text. I advice you to go through the “Nine steps” for an overview
+of various approaches, although “A practical guide” could be read independently.</p>
+<p>Second source is more subtle, and it is Joel Grus’ <a class="reference external" href="https://joelgrus.com/2020/06/06/ten-essays-on-fizz-buzz/">Ten Essays on Fizz Buzz</a>
+where he describes ways to solve the Fizz Buzz coding exercise. While it provides the
+10 solutions, it is more a discussion on Python, Maths, Testing and Coding.
+And if you don’t know Joel Grus, check out his presentation about
+his <a class="reference external" href="https://youtu.be/7jiPeIFXb6U">everlasting love towards Jupyter Notebooks</a>.</p>
+<p>Here are some resources that are associated with this article:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/olegpolivin/FizzBuzz-CI-CD">GitHub repository</a> where I performed my experiments. It is in a state after all the steps I describe below are implemented. However, you can see the development through git commits history.</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master brunch</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master branch</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="PartI.html#rules-for-branches">Rules for branches</a></li>
 </ul>
 </li>
@@ -172,7 +191,7 @@
 <li class="toctree-l2"><a class="reference internal" href="PartIII.html#definition">Definition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PartIII.html#extended-github-actions-file">Extended GitHub Actions file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PartIII.html#a-better-version-of-fizzbuzz-py">A better version of <code class="docutils literal notranslate"><span class="pre">fizzbuzz.py</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="PartIII.html#catch-the-problem-before-commiting">Catch the problem before commiting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PartIII.html#catch-the-problem-before-committing">Catch the problem before committing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="PartIV.html">IV. Pre-commit hook</a><ul>
@@ -186,6 +205,7 @@
 <li class="toctree-l2"><a class="reference internal" href="PartV.html#failing-the-test">Failing the test</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Conclusions.html">Conclusions and acknowledgements</a></li>
 </ul>
 </div>
 </div>
@@ -198,7 +218,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="PartI.html" class="btn btn-neutral float-right" title="I. Do not push to the master brunch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="PartI.html" class="btn btn-neutral float-right" title="I. Do not push to the master branch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

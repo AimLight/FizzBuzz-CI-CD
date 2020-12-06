@@ -36,6 +36,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conclusions and acknowledgements" href="Conclusions.html" />
     <link rel="prev" title="IV. Pre-commit hook" href="PartIV.html" /> 
 </head>
 
@@ -83,7 +84,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master brunch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PartI.html">I. Do not push to the master branch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PartII.html">II. Continuous Integration / Continuous Delivery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PartIII.html">III. FizzBuzz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PartIV.html">IV. Pre-commit hook</a></li>
@@ -93,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#failing-the-test">Failing the test</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Conclusions.html">Conclusions and acknowledgements</a></li>
 </ul>
 
             
@@ -160,9 +162,9 @@
             
   <div class="section" id="v-testing-the-code">
 <h1>V. Testing the code<a class="headerlink" href="#v-testing-the-code" title="Permalink to this headline">¶</a></h1>
-<p>In this chapter I show how to integrate unit tests into the <code class="docutils literal notranslate"><span class="pre">CI/CD</span></code> pipeline, and
+<p>In this section I show how to integrate unit tests into the <code class="docutils literal notranslate"><span class="pre">CI/CD</span></code> pipeline, and
 again we will make use of the <code class="docutils literal notranslate"><span class="pre">ci.yml</span></code> file. Personally, I like the <code class="docutils literal notranslate"><span class="pre">pytest</span></code> framework,
-and that’s what I will use in this chapter.</p>
+and that’s what I will use in this section.</p>
 <div class="section" id="setting-up-the-test">
 <h2>Setting up the test<a class="headerlink" href="#setting-up-the-test" title="Permalink to this headline">¶</a></h2>
 <p>There is only one function to test (<code class="docutils literal notranslate"><span class="pre">fizz_buzz.py</span></code>), and it is quite simple.
@@ -203,11 +205,12 @@ of the current github project is as follows:</p>
 <h2>Passing the test<a class="headerlink" href="#passing-the-test" title="Permalink to this headline">¶</a></h2>
 <p>And here is the result:</p>
 <a class="reference internal image-reference" href="_images/12_with_pytest.png"><img alt="_images/12_with_pytest.png" class="align-center" src="_images/12_with_pytest.png" style="width: 550.0px; height: 348.0px;" /></a>
+<p>But that’s the case when everything is ok. We are happy.</p>
 </div>
 <div class="section" id="failing-the-test">
 <h2>Failing the test<a class="headerlink" href="#failing-the-test" title="Permalink to this headline">¶</a></h2>
-<p>But that’s the case when everything is ok. We are happy. Now a new and innovative
-idea comes to our mind. Why overcomplicate the code, why do we start from <code class="docutils literal notranslate"><span class="pre">15</span></code>? Let’s
+<p>Now a new and innovative idea comes to my mind.
+Why overcomplicate the code, why do we start from <code class="docutils literal notranslate"><span class="pre">15</span></code>? Let’s
 sort everything again, the code will like so nice! So, we change the <code class="docutils literal notranslate"><span class="pre">fizzbuzz</span></code> code
 to the following one:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fizz_buzz</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -226,7 +229,7 @@ to the following one:</p>
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Great, let’s push and see, that one test has failed:</p>
+<p>Great, let’s push and see that one test has failed:</p>
 <a class="reference internal image-reference" href="_images/13_failed_test.png"><img alt="_images/13_failed_test.png" class="align-center" src="_images/13_failed_test.png" style="width: 524.0px; height: 460.0px;" /></a>
 <p>That is, by introducing unit tests into the <code class="docutils literal notranslate"><span class="pre">CI/CD</span></code> pipeline we were able to catch the
 problem before merging pull request into the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
@@ -240,6 +243,8 @@ problem before merging pull request into the <code class="docutils literal notra
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Conclusions.html" class="btn btn-neutral float-right" title="Conclusions and acknowledgements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="PartIV.html" class="btn btn-neutral float-left" title="IV. Pre-commit hook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

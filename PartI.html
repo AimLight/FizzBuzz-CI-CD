@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>I. Do not push to the master brunch &mdash; FizzBuzz CI/CD  documentation</title>
+  <title>I. Do not push to the master branch &mdash; FizzBuzz CI/CD  documentation</title>
   
 
   
@@ -84,7 +84,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">I. Do not push to the master brunch</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">I. Do not push to the master branch</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#rules-for-branches">Rules for branches</a></li>
 </ul>
 </li>
@@ -138,7 +138,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>I. Do not push to the master brunch</li>
+      <li>I. Do not push to the master branch</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -157,19 +157,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="i-do-not-push-to-the-master-brunch">
-<h1>I. Do not push to the master brunch<a class="headerlink" href="#i-do-not-push-to-the-master-brunch" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="i-do-not-push-to-the-master-branch">
+<h1>I. Do not push to the master branch<a class="headerlink" href="#i-do-not-push-to-the-master-branch" title="Permalink to this headline">¶</a></h1>
 <p>The idea is that we want the master branch to contain the main code for our project.
-Even if we work on our own, it might be a good idea to always push to a branche, and then
-integrate the code to the main branch through a pull request (PR). That way we can introduce various checks
-on the pull request, and impose structure on it. Let’s see how we can do it in <cite>GitHub</cite>.</p>
-<p>I created a repository to illustrate how one sets up a CI/CD pipeline step by step.
-You can find it here.</p>
+Even if we work on our own, it might be a good idea to always push to a different branch,
+and then integrate the code to the main branch through a pull request (PR).
+That way we can introduce various checks on pull requests,
+and impose structure on them. Let’s see how we can do it in <code class="docutils literal notranslate"><span class="pre">GitHub</span></code>.</p>
+<p>I create an empty repository to illustrate how one sets up a CI/CD pipeline step by step.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">olegpolivin</span><span class="o">/</span><span class="n">Fizz</span><span class="o">-</span><span class="n">Buzz</span><span class="o">-</span><span class="n">CI</span><span class="o">-</span><span class="n">CD</span>
 </pre></div>
 </div>
-<p>Now it contains only a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file. It also has only one <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, and nothing else.</p>
-<p>I clone it locally:</p>
+<p>So far it only contains a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file.
+It also has only one <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, and nothing else. I clone it locally:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">olegpolivin</span><span class="o">/</span><span class="n">Fizz</span><span class="o">-</span><span class="n">Buzz</span><span class="o">-</span><span class="n">CI</span><span class="o">-</span><span class="n">CD</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
@@ -196,14 +196,14 @@ Click on <code class="docutils literal notranslate"><span class="pre">Add</span>
 <p>In particular, I’ve added:</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>Require status checks to pass before merging (+ Require branches to be up to date before merging)</dt><dd><ul>
+<dt>Require status checks to pass before merging (+ Require branches to be up to date before merging).</dt><dd><ul>
 <li><p>So far there are none, but we will add them later</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Include administrators</dt><dd><ul>
+<dt>Include administrators.</dt><dd><ul>
 <li><p>Even if we are alone on the project we don’t want to allow ourselves to push to <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
 </ul>
 </dd>
@@ -211,7 +211,7 @@ Click on <code class="docutils literal notranslate"><span class="pre">Add</span>
 </li>
 </ul>
 <p>Now how can one set up a <code class="docutils literal notranslate"><span class="pre">CI/CD</span></code> pipeline, so as to prevent pushing to the <code class="docutils literal notranslate"><span class="pre">main</span></code>?</p>
-<p>See <a class="reference internal" href="PartII.html#ii-continuous-integration-continuous-delivery"><span class="std std-ref">II. Continuous Integration / Continuous Delivery</span></a> chapter.</p>
+<p>See <a class="reference internal" href="PartII.html#ii-continuous-integration-continuous-delivery"><span class="std std-ref">II. Continuous Integration / Continuous Delivery</span></a> section.</p>
 </div>
 </div>
 

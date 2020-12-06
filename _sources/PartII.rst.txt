@@ -1,8 +1,9 @@
 II. Continuous Integration / Continuous Delivery
 ================================================
 
-In practice one needs to add a config file to the repository under ``.github/workflows`` folder.
-My file is located here:
+In order to start with CI/CD using GitHub Actions one just needs to add 
+a config file to the repository under ``.github/workflows`` folder.
+You can find my configuration here:
 ::
 
   https://github.com/olegpolivin/FizzBuzz-CI-CD/blob/main/.github/workflows/ci.yml
@@ -10,7 +11,7 @@ My file is located here:
 Basic example
 **********************************
 
-For example:
+The most basic configuration file might be the following one:
 ::
 
   # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
@@ -39,12 +40,12 @@ For example:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
 
-It is not doing anything important. It makes use of ``Github Actions`` and only thing it does
-is printing a python version, in my case ``3.7``. However, this is enough for ``Github`` to
-prevent you from pushing to the ``main`` branch. It is necessary now to push to a different branch.
-Creating a pull request will run the script above. Pull request will always be approved, 
-because the script checks nothing. However, the whole procedure prevents you now from pushing 
-directly to ``main``. Later we will add code formatters and a linter to this script.
+It is not doing anything important. It makes use of ``Github Actions`` and the only
+thing it does is printing a python version, in my case ``3.7``. 
+Creating a pull request will run the script above. Pull request will always pass all 
+checks, because the script cheks nothing. However, the setting above is enough
+for ``Github`` to prevent from pushing directly to the ``main`` branch. We just need to 
+add a rule for a branch. Later we will add code formatters and a linter to this script.
 
 Set up a rule for your branch
 **********************************
@@ -56,11 +57,10 @@ what's new:
    :scale: 50 %
    :align: center
 
-Notice that ``build (3.7)`` has appeared among statuses. This corresponds to the name of the job
-(``build``) and python version ``3.7``.
-
-I made a small modification to the ``README.md`` file, and let's see if I can push it now to
-the ``main`` branch. Here is the error I get:
+Notice that ``build (3.7)`` has appeared among status checks.
+This corresponds to the name of the job (``build``) and python version ``3.7``. 
+I made a small modification to the ``README.md`` file,
+and let's see if I can push it now to the ``main`` branch. Here is the error I get:
 ::
 
   Total 3 (delta 1), reused 0 (delta 0)
@@ -73,7 +73,6 @@ the ``main`` branch. Here is the error I get:
 
 
 Nice! The commit is rejected because a required status check is needed.
-
 Therefore, let's push to a new branch. Locally, let's create a new branch
 ::
 
@@ -94,5 +93,5 @@ It becomes possible to merge after all checks are run:
    :align: center
 
 We would like to introduce actions or tests to be performed, before the pull request is 
-ready to be approved, so let's produce code that will be actually checked. It will be 
-a solution to the ``FizzBuzz`` problem, see the next chapter :ref:`III. FizzBuzz`.
+ready to be approved, so let's provide code that will be actually checked. We will 
+consider solving the ``FizzBuzz`` problem, see the next section :ref:`III. FizzBuzz`.
