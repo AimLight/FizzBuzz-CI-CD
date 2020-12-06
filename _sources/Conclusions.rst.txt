@@ -7,4 +7,8 @@ or all of them: it feels great when you see it working in practice.
 I encourage you to read the `"Nine simple steps for better-looking python code" <https://towardsdatascience.com/nine-simple-steps-for-better-looking-python-code-87e5d9d3b1cf>`_
 for even more ideas on the subject. I would be happy to get your comments and learn your ways to perform CI/CD and keep your code clean.
 
-I would like to thank Andrew Lukyanenko for helping me with details on CI/CD implementation.
+I would like to thank
+
+- `Andrew Lukyanenko <https://github.com/Erlemar>`_ for his help with configuring GitHub actions.
+- `Vladimir Iglovikov <https://github.com/ternaus>`_ for his article and his investment into openness and development of the whole Data Science community.
+- Open Data Science community (ods.ai) as the source of inspiration.
