@@ -12,6 +12,10 @@ Link to the original description of the `pre-commit hook <https://pre-commit.com
 Setting up the pre-commit hook
 ************************************
 
+First install the pre-commit hook by running:
+::
+    pip install pre-commit
+
 It is necessary to create a ``.pre-commit-config.yaml`` file in the repository, where you 
 would specify all the steps that should be done before the commit is performed. If an error
 is encountered, commit does not happen. Below is a simple ``.pre-commit-config.yaml`` configuration
@@ -60,20 +64,20 @@ Testing the pre-commit hook
 
 Here is a small test: let's change the neat ``fizzbuzz.py`` code to get back to the one that
 does not pass the checks and see what happens. Here is a part of the result: it shows 
-where it fails, and also modifies the files for corresponding pre-commit hooks (like black
-or isort).
+where it fails. Note that the pre-commit hook modifies files for some commands
+(like black or isort).
 
 .. image:: _static/imgs/10_pre-hook-failed.png
    :scale: 50 %
    :align: center
 
 Coming back to the neat version of the ``fizzbuzz.py``, the pre-commit hook test is passed.
-Nice! That's how it looks like in my case:
+That's how it looks like in my case:
 
 .. image:: _static/imgs/11_pre-hook-passed.png
    :scale: 50 %
    :align: center
 
-Finally, we want not to only check the formatting of our code, but also that the code
-works correctly. We can add ``testing`` of the code to the ``CI/CD`` pipeline! See chapter
-:ref:`V. Testing the code`.
+Finally, we want to not only check the formatting of our code, but also make sure 
+that the code works correctly. We can add unit tests to the ``CI/CD`` pipeline!
+See section :ref:`V. Testing the code`.

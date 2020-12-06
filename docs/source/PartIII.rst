@@ -5,14 +5,14 @@ OK, it is time to write some code!
 
 Definition
 ***********
-Fizz Buzz problem is the task that sometimes people get during coding interviews. 
+Fizz Buzz problem is a task that sometimes people get during coding interviews. 
 It goes like this (I take the definition from Joel's book):
 ..
   Print the numbers from 1 to 100, except that if the number is divisible by 3,
   instead print "fizz"; if the number is divisible by 5, instead print "buzz"; and 
   if the number is divisible by 15, instead print "fizzbuzz".
 
-So, imagine we come up with a great code. 
+So, imagine we come up with great code. 
 ::
 
     import scipy
@@ -30,19 +30,19 @@ So, imagine we come up with a great code.
         else: return str(n)
 
 We were in a hurry, so we first imported everything that we usually import, made comments
-to visually show where the code starts, and printed ``if``-``return`` statements on the statements
-line. Clearly, there is no newline at end of file, who cares since the code is so great!
+to visually show where the code starts, and printed ``if``-``return`` statements on the same
+line. Clearly, there is no newline at the end of file, who cares since the code is so great!
 
 Actually, we do care because the code needs to be readable and beautiful, and we 
 decide that it is a good idea to impose structure on every pull request. Also, code must
 pass linter checks and be formatted in a unified manner. It is possible to add all the
 necessary checks that we want to impose in the ``ci.yml`` file that we created in the previous
-chapter. Let's say we add:
+section. Let's say we add:
 
-- black formatter of the code
-- isort to sort the imports in alphabetical order
-- flake8 and pylint to inspect the code for conformity with good code practices
-- MyPy as a static type checker
+- ``black`` formatter of the code
+- ``isort`` to sort the imports in alphabetical order
+- ``flake8`` and ``pylint`` to inspect the code for conformity with good code practices
+- ``MyPy`` as a static type checker
 
 Extended GitHub Actions file
 *******************************************
@@ -137,11 +137,11 @@ The code below passes all of the checks that we have imposed on it.
 Now when we push it to the ``dev`` branch, pull requests could be merged into the main
 branch since all checks are passed.
 
-Catch the problem before commiting
+Catch the problem before committing
 ***********************************
 
 It might be that you want to learn that there are problems with your code (that is, 
-it does not pass a check that one imposed) before commiting. Yes, you will run the tests 
+it does not pass a check that one imposed) before committing. Yes, you will run the tests 
 locally, but what if there is an additional point of control that does not allow you 
 to commit your changes unless all the checks are passed? It is called a ``Pre-commit hook``,
-and more on how to set it up in the next chapter: :ref:`IV. Pre-commit hook`.
+and more on how to set it up in the next section: :ref:`IV. Pre-commit hook`.
