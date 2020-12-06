@@ -11,7 +11,7 @@ This is a "documentation"-like version of my article on Medium:
 
 In this article I describe how one can set up a continuous integration / continuous delivery (CI/CD) pipeline using GitHub. 
 This text is inspired by two sources. First one is
-`"Nine simple steps for better-looking python code" <https://towardsdatascience.com/nine-simple-steps-for-better-looking-python-code-87e5d9d3b1cf>`_ 
+`"Nine simple steps for better-looking python code" <https://ternaus.blog/tutorial/2020/04/09/Nine-simple-steps-for-better-looking-python-code.html>`_ 
 by `Vladimir Iglovikov <https://github.com/ternaus>`_. He gives the keys to better coding practices with CI/CD systems as its core.
 It is a great article and I wrote mine following the steps outlined there.
 So, "A practical guide for better-looking python code" is an accompanying/practical
